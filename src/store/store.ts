@@ -9,11 +9,27 @@ export interface Habit {
 
 interface HabitState {
   habits: Habit[];
+  addHabit: (name: string, frequency: "daily" | "weekly") => void;
 }
 
-const useHabbitStore = create<HabitState>(() => {
+const useHabbitStore = create<HabitState>((set) => {
   return {
     habits: [],
+    addHabit: (name, frequency) =>
+      set((state) => {
+        return {
+          habits: [
+            ...state.habits,
+            {
+              id: Date.now().toString(),
+              name,
+              frequency,
+              completedDates: [],
+              createdAt: new Date().toISOString(),
+            },
+          ],
+        };
+      }),
   };
 });
 

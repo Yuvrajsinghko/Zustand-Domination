@@ -1,5 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
 import useHabbitStore from "./store/store";
+import AddHabitForm from "./components/add-habbit-form";
 
 const App = () => {
   // const store = useHabbitStore();
@@ -11,7 +12,7 @@ const App = () => {
           Habbit Tracker
         </Typography>
         {/* Form */}
-        
+        <AddHabitForm />
       </Box>
     </Container>
   );
